@@ -25,6 +25,9 @@ class MyWebBrowser():
         self.forward_btn = QPushButton(">")
         self.forward_btn.setMinimumHeight(30)
 
+        self.refresh_btn = QPushButton("R")
+        self.refresh_btn.setMinimumHeight(30)
+
         self.home_btn = QPushButton("H")
         self.home_btn.setMinimumHeight(30)
 
@@ -32,6 +35,7 @@ class MyWebBrowser():
         self.horizontal.addWidget(self.go_btn)
         self.horizontal.addWidget(self.back_btn)
         self.horizontal.addWidget(self.forward_btn)
+        self.horizontal.addWidget(self.refresh_btn)
         self.horizontal.addWidget(self.home_btn)
 
         self.browser = QWebEngineView()
@@ -45,6 +49,7 @@ class MyWebBrowser():
         self.back_btn.clicked.connect(self.browser.back)
         self.forward_btn.clicked.connect(self.browser.forward)
         self.home_btn.clicked.connect(lambda: self.navigate_home(self.url_bar.toPlainText()))
+        self.refresh_btn.clicked.connect(self.browser.reload)
 
         self.window.setLayout(self.layout)
         self.window.show()
